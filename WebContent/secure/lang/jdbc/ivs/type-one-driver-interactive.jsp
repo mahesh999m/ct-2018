@@ -577,13 +577,13 @@ function validation(selector) {
 		var max = $(this).attr('maxlength');
 		if ($.inArray(e.keyCode, [8, 46, 37, 39, 27]) !== -1) {
 			return;
-		}
-		if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && ((e.keyCode < 96 || e.keyCode > 105) || (e.keyCode == 13 || e.keyCode == 9))) {
+		} //error
+		if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && ((e.keyCode < 96 || e.keyCode > 105) || (e.keyCode == 13 || e.keyCode == 9)) ) {
 			e.preventDefault();
 		}
 		
 	});
-	$(selector).on('keyup', function(e) {
+	$(selector).on('keyup', function(e) { 
 		if ($(this).val().length != 0) {
 			$('.error-text').remove();
 		}
