@@ -321,11 +321,11 @@ function initIntroJs() {
 		steps: [{
 			    element: '#driverOne',
 			    intro: '',
+			    tooltipClass: 'hide',
 			    position: 'right',
 		  	}, {
 			    element: '#htmlBody',
 			    intro: '',
-			    position: 'right',
 			}, {
 			    element: '#arrowAnimationDiv',
 			    intro: '',
@@ -333,7 +333,7 @@ function initIntroJs() {
 			} , {
 			    element: '#browser',
 			    intro: '',
-			    position: 'right',
+			    position : 'left',
 			}, {
 			    element: '#restart',
 			    intro: 'Click to restart.',
@@ -348,17 +348,10 @@ function initIntroJs() {
 		case "driverOne":
 			var text = "Type-1 driver is also called as <b>JDBC-ODBC Bridge Driver.</b><br> <span><span id ='jdbc'>Here,<br> "
 						+"<b>JDBC</b>- Java Database Connectivity.</span><br><span id = 'odbc'><b>ODBC</b>- Open Database Connectivity.<br></span></span>";
-				typing(".introjs-tooltiptext", text, function() {
-					zoomInEffect("#DLApi");
-					zoomInEffect("#databaseTable");
-					zoomInEffect('#database',function() {
-						var text = "This is data in the form of table in database.";
-						popover("#database", "right", text,function() {
-							$('#popover1').parents(".popover-content").append('<div class = "text-right">'
-									+'<span class="introjs-button ct-btn-next" onclick="client();">Next &#8594;</span><div>');	
-						});
-					});
-				});
+			popover("#totalPopoverDiv", "right", text,function() {
+				$('#popover1').parents(".popover-content").append('<div class = "text-right">'
+				+'<span class="introjs-button ct-btn-next" onclick="totalAnimation();">Next &#8594;</span><div>');	
+			});
 			break;
 		case "htmlBody":
 			$('.introjs-helperLayer').one('transitionend', function () {
@@ -396,20 +389,32 @@ function initIntroJs() {
 	introjs.start();
 }
 
+function totalAnimation() {
+	count++;
+	$('.text-right').remove();
+	zoomInEffect("#DLApi");
+	zoomInEffect("#database",function() {
+		zoomInEffect('#databaseTable',function() {
+			var text = "This is data in the form of table in database.";
+			popover("#database", "left", text,function() {
+				$('#popover2').parents(".popover-content").append('<div class = "text-right">'
+				+'<span class="introjs-button ct-btn-next" onclick="client();">Next &#8594;</span><div>');	
+			});
+		});
+	});
+}
+
 function arrowAnimation() {
+	count++;
 	$('.user-btn').remove();
 	svgLineTopAndBottom("#driverOne","#javaApp","#bridge" ,"line1","grey", "bottom","top", "left", "left", "", function() {
 		svgLineTopAndBottom("#driverOne","#bridge","#oDriver" ,"line2","grey", "bottom","top", "left", "left", "", function() {
 			svgLineTopAndBottom("#driverOne","#oDriver","#DLApi" ,"line3","grey", "bottom","top", "left", "left", "", function() {
 				svgLineTopAndBottom("#driverOne","#DLApi","#ovalShape" ,"line4","grey", "bottom","top", "left", "left", "", function() {
-					svgLineTopAndBottom("#driverOne","#ovalShape","#DLApi" ,"line5","grey", "top","bottom", "right", "right", "", function() {
-						svgLineTopAndBottom("#driverOne","#DLApi","#oDriver" ,"line6","grey", "top","bottom", "right", "right", "", function() {
-							svgLineTopAndBottom("#driverOne","#oDriver","#bridge" ,"line7","grey", "top","bottom", "right", "right", "", function() {
-								svgLineTopAndBottom("#driverOne","#bridge","#javaApp" ,"line8","grey", "top","bottom", "right", "right", "", function() {
-									$('.introjs-nextbutton').show();
-								});
-							});
-						});
+					var text = "Here getting the information from the database table.";
+					popover("#ovalShape", "right", text,function() {
+						$('#popover6').parents(".popover-content").append('<div class = "text-right">'
+								+'<span class="introjs-button ct-btn-next" onclick="responseArrowAnimaiton();">Next &#8594;</span><div>');
 					});
 				});
 			});
@@ -417,18 +422,33 @@ function arrowAnimation() {
 	});
 }
 
-function client() {
+
+function responseArrowAnimaiton() {
+	$('.text-right').remove();
+	svgLineTopAndBottom("#driverOne","#ovalShape","#DLApi" ,"line5","grey", "top","bottom", "right", "right", "", function() {
+		svgLineTopAndBottom("#driverOne","#DLApi","#oDriver" ,"line6","grey", "top","bottom", "right", "right", "", function() {
+			svgLineTopAndBottom("#driverOne","#oDriver","#bridge" ,"line7","grey", "top","bottom", "right", "right", "", function() {
+				svgLineTopAndBottom("#driverOne","#bridge","#javaApp" ,"line8","grey", "top","bottom", "right", "right", "", function() {
+				//$('.introjs-nextbutton').show();
+				introjs.nextStep();
+				});
+			});
+		});
+	});
+}
+
+function client() {              
 	count++;
 	$('.text-right').remove();
-	zoomInEffect("#browser");
 	zoomInEffect('#javaApp',function() {
-		$('#line111').css('opacity', '');
-		svgText('#line111', 'Application layer');
-		var text = "This is the browser.";
-		popover("#javaApp", "left", text,function() {
-			$('#popover2').parents(".popover-content").append('<div class = "text-right">'
-					+'<span class="introjs-button ct-btn-next" onclick="oDriver();">Next &#8594;</span><div>');
-			
+		zoomInEffect("#browser",function() {
+			$('#line111').css('opacity', '');
+			svgText('#line111', 'Application layer');
+			var text = "This is the browser.";
+			popover("#javaApp", "left", text,function() {
+				$('#popover3').parents(".popover-content").append('<div class = "text-right">'
+						+'<span class="introjs-button ct-btn-next" onclick="oDriver();">Next &#8594;</span><div>');
+			});
 		});
 	});
 }
@@ -441,7 +461,7 @@ function client() {
 		svgText('#line113', 'Database layer');
 		var text = "odbc Driver";
 		popover("#oDriver", "left", text,function() {
-			$('#popover3').parents(".popover-content").append('<div class = "text-right">'
+			$('#popover4').parents(".popover-content").append('<div class = "text-right">'
 					+'<span class="introjs-button ct-btn-next" onclick="bridge();">Next &#8594;</span><div>');
 		});
 	});
@@ -455,7 +475,7 @@ function client() {
 		svgText('#line112', 'Middle / Service layer');
 		var text = "bridge text";
 		popover("#bridge", "left", text,function() {
-			$('#popover4').parents(".popover-content").append('<div class = "text-right">'
+			$('#popover5').parents(".popover-content").append('<div class = "text-right">'
 					+'<span class="introjs-button ct-btn-next" onclick="inputIntroStep();">Next &#8594;</span><div>');
 		});
 	 });
@@ -577,8 +597,8 @@ function validation(selector) {
 		var max = $(this).attr('maxlength');
 		if ($.inArray(e.keyCode, [8, 46, 37, 39, 27]) !== -1) {
 			return;
-		} //error
-		if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && ((e.keyCode < 96 || e.keyCode > 105) || (e.keyCode == 13 || e.keyCode == 9)) ) {
+		}
+		if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && ((e.keyCode < 96 || e.keyCode > 105) || (e.keyCode == 13 || e.keyCode == 9))) {
 			e.preventDefault();
 		}
 		
@@ -673,8 +693,9 @@ function validation(selector) {
 					</div>
 					<div class="col-xs-12 margin-top-20"></div>
 				</div>
-				<div class="col-xs-5" id="BrowserTableDiv">
-					<div class="col-xs-12 margin-top-20">
+				<div class="col-xs-5 padding00" id="BrowserTableDiv">
+					<div id ="totalPopoverDiv" class="col-xs-12 padding00"><div class="col-xs-12 text-center">Browser</div></div>
+					<div class="col-xs-12">
 						<div class='col-xs-12 opacity00 container' id='browser'>
 							<div class='tab-container'>
 								<ul class="tabs clearfix">
