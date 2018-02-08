@@ -75,7 +75,7 @@
 						<td>1</td>
 						<td>JDBC Architecture</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('C++ program life cycle', 'c-plus-pus-program-life-cycle.jsp', 1, 1)"><i
+							href="javascript:opendialog('JDBC Architecture', 'jdbc.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">JDBC Architecture</span></td>
 						<td></td>
 						<td></td>
@@ -87,10 +87,10 @@
 						<td>2</td>
 						<td>Type1 Driver</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('History of C++ Language', 'cpp-language-timeline.jsp', 1, 1)"><i
+							href="javascript:opendialog('Type one Driver', 'type-one-driver.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Type1 Driver</span></td>
-						<td></td>
-						<td></td>
+						<td>NO NEED</td>
+						<td>MAHESH</td>
 						<td></td>
 						<td></td>
 					</tr>
@@ -138,8 +138,8 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('All drivers', 'jdbc-drivers.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">All Drivers</span></td>
-						<td></td>
-						<td></td>
+						<td>NO NEED</td>
+						<td>KARTHIK</td>
 						<td></td>
 						<td></td>
 					</tr>
@@ -150,7 +150,7 @@
 		
 		<div class='row'>
 			<div class='text-center'>
-				<h3>UNIT-2: Connecting to Database</h3>
+				<h3>UNIT-2: Connection to Database</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -167,31 +167,123 @@
 						<td>1</td>
 						<td>connection</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('History of C++ Language', 'cpp-language-timeline.jsp', 1, 1)"><i
+							href="javascript:opendialog('Get Conncection JDBC', 'get-connection.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">connection</span></td>
 						<td></td>
-						<td>swathi</td>
+						<td>Swathi</td>
 						<td></td>
 						<td></td>
 					</tr>
-
-
+					
 					<tr>
 						<td>2</td>
-						<td>DB connection with program</td>
+						<td>Result set</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('C++ program life cycle', 'c-plus-pus-program-life-cycle.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Connection Program</span></td>
+							href="javascript:opendialog('Result set', 'result-set.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Result set</span></td>
 						<td></td>
-						<td>karthik</td>
+						<td>Ramya</td>
 						<td></td>
 						<td></td>
 					</tr>
 					
+					<tr>
+						<td>3</td>
+						<td>CRUD</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('CRUD', 'crud.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">CRUD</span></td>
+						<td></td>
+						<td>Swathi</td>
+						<td></td>
+						<td></td>
+					</tr>
 					
+				</tbody>
+			</table>
+		</div>
+		
+		<div class='row'>
+			<div class='text-center'>
+				<h3>UNIT-3: Types of Statements</h3>
+			</div>
+			<table class='table table-bordered'>
+				<tr>
+					<th>#</th>
+					<th class="col-xs-3">Topic</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
+					<th class="col-xs-1">Created By</th>
+					<th class="col-xs-1">Reviewed By</th>
+					<th class="col-xs-1">Submit Date</th>
+				</tr>
+				<tbody class='table-striped'>
+					<tr>
+						<td>1</td>
+						<td>Prepared Statement</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Prepared Statement', 'prepared-statement.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : black">Prepared Statement</span></td>
+						<td></td>
+						<td>Karthik</td>
+						<td></td>
+						<td></td>
+					</tr>
 					
+					<tr>
+						<td>2</td>
+						<td>Callable Statement</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Callable Statement', 'callable-statement.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : black">Callable Statement</span></td>
+						<td></td>
+						<td>Swathi</td>
+						<td></td>
+						<td></td>
+					</tr>
 					
+					<tr>
+						<td>3</td>
+						<td>Batch Update</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Batch Updates', 'batch-update.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : black">Batch Update</span></td>
+						<td></td>
+						<td>Swathi</td>
+						<td></td>
+						<td></td>
+					</tr>
 					
+				</tbody>
+			</table>
+		</div>
+		
+		<div class='row'>
+			<div class='text-center'>
+				<h3>UNIT-4: Adavanced Topics</h3>
+			</div>
+			<table class='table table-bordered'>
+				<tr>
+					<th>#</th>
+					<th class="col-xs-3">Topic</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
+					<th class="col-xs-1">Created By</th>
+					<th class="col-xs-1">Reviewed By</th>
+					<th class="col-xs-1">Submit Date</th>
+				</tr>
+				<tbody class='table-striped'>
+					<tr>
+						<td>1</td>
+						<td>Transaction Management</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Transaction Management', 'transaction-management.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : black">Transaction Management</span></td>
+						<td></td>
+						<td>Swathi</td>
+						<td></td>
+						<td></td>
+					</tr>
 					
 				</tbody>
 			</table>

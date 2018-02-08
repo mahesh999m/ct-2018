@@ -74,7 +74,7 @@ ul.tabs > li.active {
   background: #efefef;
 }
 
-ul.tabs > li{
+ul.tabs > li {
 	margin: 2px 0 -4px;
 	position: relative;
 	width: 170px;
@@ -217,9 +217,6 @@ p {
 	background: white;
 }
 
-/* .padding00 {
-	padding: 0;  //repeating
-} */
 
 .display-css {
 	display: inline-block;
@@ -285,7 +282,31 @@ caption, table.table-bordered, table.table-bordered > thead > tr > th, table.tab
 	background: green;
 }
 
+.z-index-css {
+	z-index : 9999999999;
+	background: white;
+	position : relative;
+}
 
+.quadrat {
+  -webkit-animation: NAME-YOUR-ANIMATION 1s infinite; 
+  -moz-animation: NAME-YOUR-ANIMATION 1s infinite; 
+}
+
+@-webkit-keyframes NAME-YOUR-ANIMATION {
+  0%, 49% {
+    background-color: 	rgb(255,255,0);
+    border: 3px solid #e50000;
+  }
+  50%, 100% {
+    background-color: rgb(154,205,50);
+    border: 3px solid rgb(117, 209, 63);
+  }
+}
+
+#browserText {
+	height: 100px;
+}
 
 </style>
 </head>
@@ -298,10 +319,10 @@ $(document).ready(function() {
 	$('#browserTable *').css('padding','0');
 	$('#browserTable').css('margin-bottom','0px').addClass('opacity00');
 	//$('.opacity00').removeClass('opacity00');
-	svgAppend("#driverOne","totalSvg","","blue");
-	svgLineRightAndLeft("#driverOne", "#span1", "#span2", "line111","grey", "left","right", "","", true);
-	svgLineRightAndLeft("#driverOne", "#span3", "#span4", "line112","grey", "left","right", "","", true);
-	svgLineRightAndLeft("#driverOne", "#span5", "#span6", "line113","grey", "left","right", "","", true);
+	svgAppend("#svgParent","totalSvg","","blue");
+	svgLineRightAndLeft("#svgParent", "#span1", "#span2", "line111","grey", "left","right", "","", true);
+	svgLineRightAndLeft("#svgParent", "#span3", "#span4", "line112","grey", "left","right", "","", true);
+	svgLineRightAndLeft("#svgParent", "#span5", "#span6", "line113","grey", "left","right", "","", true);
 	$('#line111, #line112, #line113').css({'marker-end' : '', 'opacity' : '0'});
 	$('#restart').click(function() {
 		location.reload();
@@ -363,9 +384,9 @@ function initIntroJs() {
 			});
 			break;
 		case "arrowAnimationDiv":
+			$('#sId').attr('disabled','disabled');
 			$('.introjs-helperLayer').one('transitionend', function () {
 				introjs.refresh();
-				$('#totalSvg').css('z-index','9999999');
 				var text = "arrowAnimationDiv text";
 				typing(".introjs-tooltiptext", text, function() {
 					$('.introjs-tooltipbuttons').append('<a class="user-btn introjs-button" onClick="arrowAnimation()">Next &#8594;</a>');
@@ -379,7 +400,9 @@ function initIntroJs() {
 				typing(".introjs-tooltiptext", text, function() {
 					var id = $('#sId').val().trim();
 					$('tr.hide:eq('+id[id.length-1]+')').removeClass('hide');
-					zoomInEffect('#browserTable');
+					zoomInEffect('#browserTable',function() {
+						$('.quadrat').removeClass('quadrat');
+					});
 					introjs.refresh();
 				});
 			});
@@ -394,9 +417,10 @@ function totalAnimation() {
 	$('.text-right').remove();
 	zoomInEffect("#DLApi");
 	zoomInEffect("#database",function() {
+		$('#sId').attr('disabled','disabled');
 		zoomInEffect('#databaseTable',function() {
 			var text = "This is data in the form of table in database.";
-			popover("#database", "left", text,function() {
+			popover("#ovalShape", "left", text,function() {
 				$('#popover2').parents(".popover-content").append('<div class = "text-right">'
 				+'<span class="introjs-button ct-btn-next" onclick="client();">Next &#8594;</span><div>');	
 			});
@@ -407,12 +431,13 @@ function totalAnimation() {
 function arrowAnimation() {
 	count++;
 	$('.user-btn').remove();
-	svgLineTopAndBottom("#driverOne","#javaApp","#bridge" ,"line1","grey", "bottom","top", "left", "left", "", function() {
-		svgLineTopAndBottom("#driverOne","#bridge","#oDriver" ,"line2","grey", "bottom","top", "left", "left", "", function() {
-			svgLineTopAndBottom("#driverOne","#oDriver","#DLApi" ,"line3","grey", "bottom","top", "left", "left", "", function() {
-				svgLineTopAndBottom("#driverOne","#DLApi","#ovalShape" ,"line4","grey", "bottom","top", "left", "left", "", function() {
+	svgLineTopAndBottom("#svgParent","#javaApp","#bridge" ,"line1","grey", "bottom","top", "left", "left", "", function() {
+		svgLineTopAndBottom("#svgParent","#bridge","#oDriver" ,"line2","grey", "bottom","top", "left", "left", "", function() {
+			svgLineTopAndBottom("#svgParent","#oDriver","#DLApi" ,"line3","grey", "bottom","top", "left", "left", "", function() {
+				svgLineTopAndBottom("#svgParent","#DLApi","#ovalShape" ,"line4","grey", "bottom","top", "left", "left", "", function() {
+					$('table:eq(1),caption:eq(1)').addClass('z-index-css');
 					var text = "Here getting the information from the database table.";
-					popover("#ovalShape", "right", text,function() {
+					popover("#databaseDiv", "right", text,function() {
 						$('#popover6').parents(".popover-content").append('<div class = "text-right">'
 								+'<span class="introjs-button ct-btn-next" onclick="responseArrowAnimaiton();">Next &#8594;</span><div>');
 					});
@@ -424,12 +449,13 @@ function arrowAnimation() {
 
 
 function responseArrowAnimaiton() {
+	var id1 = +$('#sId').val().trim()[4];
+	$('#tableBody > tr:eq('+id1+')').addClass('quadrat');
 	$('.text-right').remove();
-	svgLineTopAndBottom("#driverOne","#ovalShape","#DLApi" ,"line5","grey", "top","bottom", "right", "right", "", function() {
-		svgLineTopAndBottom("#driverOne","#DLApi","#oDriver" ,"line6","grey", "top","bottom", "right", "right", "", function() {
-			svgLineTopAndBottom("#driverOne","#oDriver","#bridge" ,"line7","grey", "top","bottom", "right", "right", "", function() {
-				svgLineTopAndBottom("#driverOne","#bridge","#javaApp" ,"line8","grey", "top","bottom", "right", "right", "", function() {
-				//$('.introjs-nextbutton').show();
+	svgLineTopAndBottom("#svgParent","#ovalShape","#DLApi" ,"line5","grey", "top","bottom", "right", "right", "", function() {
+		svgLineTopAndBottom("#svgParent","#DLApi","#oDriver" ,"line6","grey", "top","bottom", "right", "right", "", function() {
+			svgLineTopAndBottom("#svgParent","#oDriver","#bridge" ,"line7","grey", "top","bottom", "right", "right", "", function() {
+				svgLineTopAndBottom("#svgParent","#bridge","#javaApp" ,"line8","grey", "top","bottom", "right", "right", "", function() {
 				introjs.nextStep();
 				});
 			});
@@ -471,7 +497,7 @@ function client() {
 	 count++;
 	 $('.text-right').remove();
 	 zoomInEffect('#bridge',function() {
-		$('#line112').css('opacity', '1');
+		$('#line112').css('opacity', '');
 		svgText('#line112', 'Middle / Service layer');
 		var text = "bridge text";
 		popover("#bridge", "left", text,function() {
@@ -592,6 +618,7 @@ function result() {
 }
 
 function validation(selector) {
+	$('#sId').removeAttr('disabled');
 	$(selector).effect('highlight', {color: 'yellow'}, 500).focus();
 	$(selector).on('keydown', function(e) {
 		var max = $(this).attr('maxlength');
@@ -633,65 +660,67 @@ function validation(selector) {
 		<div class="col-xs-12 margin-top-20">
 			<div class="col-xs-10 border-radius" id="driverOne">
 				<div id="arrowAnimationDiv" class="col-xs-7">
-					<div class="col-xs-12 margin-top-10 padding00">
-						<span class="col-xs-1 text-left padding00"><div
-								class="display-css" id="span1"></div></span> <span
-							class="col-xs-1 col-xs-offset-10 text-right padding00"><div
-								class="display-css" id="span2"></div></span>
-					</div>
-					<div class="col-xs-12 margin-top-20">
-						<div class="col-xs-offset-4 col-xs-4 border-radius padding00 opacity00"
-							id="javaApp">
-							<div class="col-xs-12  text-center rounded-top padding00">
-								Client App</div>
-							<div class="col-xs-12 dash"></div>
-							<div id="jAPI"
-								class="col-xs-12  text-center rounded-bottom padding00">JDBC
-								API</div>
+					<div class="col-xs-12" id="svgParent">
+						<div class="col-xs-12 margin-top-10 padding00">
+							<span class="col-xs-1 text-left padding00"><div
+									class="display-css" id="span1"></div></span> <span
+								class="col-xs-1 col-xs-offset-10 text-right padding00"><div
+									class="display-css" id="span2"></div></span>
 						</div>
-					</div>
-					
-					<div class="col-xs-12 margin-top-20 padding00">
-						<span class="col-xs-1 text-left padding00"><div
-								class="display-css" id="span3"></div></span> <span
-							class="col-xs-1 col-xs-offset-10 text-right padding00"><div
-								class="display-css" id="span4"></div></span>
-					</div>
-					
-					<div class="col-xs-12 margin-top-50">
-						<div id="bridge"
-							class="col-xs-offset-4 col-xs-4 border-radius text-center opacity00">JDBC-ODBC
-							Bridge (Type-1 Driver)</div>
-					</div>
-					<div class="col-xs-12 margin-top-50">
-						<div id="oDriver"
-							class="col-xs-offset-4 col-xs-4 border-radius text-center opacity00">
-							ODBC Driver</div>
-					</div>
-					<div class="col-xs-12 margin-top-20 padding00">
-						<span class="col-xs-1 text-left padding00"><div
-								class="display-css" id="span5"></div></span> <span
-							class="col-xs-1 col-xs-offset-10 text-right padding00"><div
-								class="display-css" id="span6"></div></span>
-					</div>
-					<div class="col-xs-12 margin-top-20">
-						<div id="DLApi"
-							class="margin-top-10 col-xs-offset-4 col-xs-4 border-radius text-center opacity00">
-							D/B Engine</div>
-					</div>
-					<div class="col-xs-12 margin-top-50">
-						<div id="database"
-							class="col-xs-offset-4 col-xs-4 text-center opacity00 padding00">
-							<div id="ovalShape" class="col-xs-12 oval-shape"></div>
-							<div class="col-xs-12 database-box border-radius">
-								<div class="margin-top-20">
-									<span>Database</span>
-									<div></div>
+						<div class="col-xs-12 margin-top-20">
+							<div class="col-xs-offset-4 col-xs-4 border-radius padding00 opacity00"
+								id="javaApp">
+								<div class="col-xs-12  text-center rounded-top padding00">
+									Client App</div>
+								<div class="col-xs-12 dash"></div>
+								<div id="jAPI"
+									class="col-xs-12  text-center rounded-bottom padding00">JDBC
+									API</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-12 margin-top-20 padding00">
+							<span class="col-xs-1 text-left padding00"><div
+									class="display-css" id="span3"></div></span> <span
+								class="col-xs-1 col-xs-offset-10 text-right padding00"><div
+									class="display-css" id="span4"></div></span>
+						</div>
+						
+						<div class="col-xs-12 margin-top-50">
+							<div id="bridge"
+								class="col-xs-offset-4 col-xs-4 border-radius text-center opacity00">JDBC-ODBC
+								Bridge (Type-1 Driver)</div>
+						</div>
+						<div class="col-xs-12 margin-top-50">
+							<div id="oDriver"
+								class="col-xs-offset-4 col-xs-4 border-radius text-center opacity00">
+								ODBC Driver</div>
+						</div>
+						<div class="col-xs-12 margin-top-20 padding00">
+							<span class="col-xs-1 text-left padding00"><div
+									class="display-css" id="span5"></div></span> <span
+								class="col-xs-1 col-xs-offset-10 text-right padding00"><div
+									class="display-css" id="span6"></div></span>
+						</div>
+						<div class="col-xs-12 margin-top-20">
+							<div id="DLApi"
+								class="margin-top-10 col-xs-offset-4 col-xs-4 border-radius text-center opacity00">
+								D/B Engine</div>
+						</div>
+						<div class="col-xs-12 margin-top-50">
+							<div id="database"
+								class="col-xs-offset-4 col-xs-4 text-center opacity00 padding00">
+								<div id="ovalShape" class="col-xs-12 oval-shape"></div>
+								<div id="databaseDiv" class="col-xs-12 database-box border-radius">
+									<div class="margin-top-20">
+										<span>Database</span>
+										<div></div>
+									</div>
 								</div>
 							</div>
 						</div>
+						<div class="col-xs-12 margin-top-20"></div>
 					</div>
-					<div class="col-xs-12 margin-top-20"></div>
 				</div>
 				<div class="col-xs-5 padding00" id="BrowserTableDiv">
 					<div id ="totalPopoverDiv" class="col-xs-12 padding00"><div class="col-xs-12 text-center">Browser</div></div>
@@ -782,7 +811,7 @@ function validation(selector) {
 								<th>SBranch</th>
 								<th>SmobNo</th>
 							</tr></thead>
-							<tr>
+							<tbody id="tableBody"><tr>
 								<td>10030</td>
 								<td>Balu</td>
 								<td>EEE</td>
@@ -799,7 +828,7 @@ function validation(selector) {
 								<td>Ramu</td>
 								<td>CSE</td>
 								<td>9849526378</td>
-							</tr>
+							</tr></tbody>
 						</table></div>
 					</div>
 				</div>
