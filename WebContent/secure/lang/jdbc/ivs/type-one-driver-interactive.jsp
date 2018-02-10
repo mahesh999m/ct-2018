@@ -16,6 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
+<script src='/js/jquery.scrollTo.js'></script>
 <script src="../js/ct-svg-lines.js"></script>
 <title>driver-1-with-browser</title>
 <style>
@@ -251,7 +252,7 @@ caption, table.table-bordered, table.table-bordered > thead > tr > th, table.tab
   border-top: 2px dashed #322f32;
   background: none;
   height:0;
-}  
+}
 
 .rounded-top {
     border-top-left-radius: 10px;
@@ -395,6 +396,7 @@ function initIntroJs() {
 			break;
 			
 		case "browser":
+			$('.introjs-tooltip').css({'min-width':'200px','overflow-y':'','height':''});
 			$('.introjs-helperLayer').one('transitionend', function () {
 				var text = "getting student details by student id";
 				typing(".introjs-tooltiptext", text, function() {
@@ -429,21 +431,57 @@ function totalAnimation() {
 }
 
 function arrowAnimation() {
+	$('.introjs-tooltip').css({'min-width':'350px','overflow-y':'auto'});
 	count++;
 	$('.user-btn').remove();
 	svgLineTopAndBottom("#svgParent","#javaApp","#bridge" ,"line1","grey", "bottom","top", "left", "left", "", function() {
-		svgLineTopAndBottom("#svgParent","#bridge","#oDriver" ,"line2","grey", "bottom","top", "left", "left", "", function() {
-			svgLineTopAndBottom("#svgParent","#oDriver","#DLApi" ,"line3","grey", "bottom","top", "left", "left", "", function() {
-				svgLineTopAndBottom("#svgParent","#DLApi","#ovalShape" ,"line4","grey", "bottom","top", "left", "left", "", function() {
-					$('table:eq(1),caption:eq(1)').addClass('z-index-css');
-					var text = "Here getting the information from the database table.";
-					popover("#databaseDiv", "right", text,function() {
-						$('#popover6').parents(".popover-content").append('<div class = "text-right">'
-								+'<span class="introjs-button ct-btn-next" onclick="responseArrowAnimaiton();">Next &#8594;</span><div>');
+		var text = "<li>This is first arrow text This is first arrow textThis is first arrow textThis is first arrow textThis is first arrow text</li>";
+		$('.introjs-tooltiptext').append("<ul></ul>");
+		typing(".introjs-tooltiptext > ul", text, function() {
+			appendUserButton('.introjs-tooltipbuttons',function() {
+				svgLineTopAndBottom("#svgParent","#bridge","#oDriver" ,"line2","grey", "bottom","top", "left", "left", "", function() {
+					$('.introjs-tooltiptext > ul').append("<li></li>");
+					$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons',{duration:'slow', offset :{left:'left', top:'top' }});
+					var text = "This is second arrow text";
+					$('.introjs-tooltip').css('height','100px');
+					typing(".introjs-tooltiptext > ul li:last", text, function() {
+						appendUserButton('.introjs-tooltipbuttons',function() {
+							svgLineTopAndBottom("#svgParent","#oDriver","#DLApi" ,"line3","grey", "bottom","top", "left", "left", "", function() {
+								$('.introjs-tooltiptext > ul').append("<li></li>");
+								$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons',{duration:'slow', offset :{left:'left', top:'top' }});
+								var text = "This is third arrow text This is third arrow textThis is third arrow textThis is third arrow textThis is third arrow text ";
+								typing(".introjs-tooltiptext > ul li:last", text, function() {
+									appendUserButton('.introjs-tooltipbuttons',function() {
+										svgLineTopAndBottom("#svgParent","#DLApi","#ovalShape" ,"line4","grey", "bottom","top", "left", "left", "", function() {
+											$('.introjs-tooltiptext > ul').append("<li></li>");
+											$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons',{duration:'slow', offset :{left:'left', top:'top' }});
+											var text = "This is fourth arrow text";
+											typing(".introjs-tooltiptext > ul li:last", text, function() {
+												$('table:eq(1),caption:eq(1)').addClass('z-index-css');
+												var text = "Here getting the information from the database table.";
+												popover("#databaseDiv", "right", text,function() {
+													$('#popover6').parents(".popover-content").append('<div class = "text-right">'
+															+'<span class="introjs-button ct-btn-next" onclick="responseArrowAnimaiton();">Next &#8594;</span><div>');
+												});
+											});
+										});
+									});
+								});
+							});
+						});
 					});
 				});
 			});
 		});
+		
+	});
+}
+
+function appendUserButton(id, callBackFunction) {
+	$(id).append("<div class='text-right'><a class='user-btn introjs-button'>Next &#8594;</a></div>");
+	$('.text-right').click(function() {
+		$(this).remove();
+		callBackFunction();
 	});
 }
 
@@ -452,7 +490,36 @@ function responseArrowAnimaiton() {
 	var id1 = +$('#sId').val().trim()[4];
 	$('#tableBody > tr:eq('+id1+')').addClass('quadrat');
 	$('.text-right').remove();
+	$('#popover6').append('<ul></ul>');
 	svgLineTopAndBottom("#svgParent","#ovalShape","#DLApi" ,"line5","grey", "top","bottom", "right", "right", "", function() {
+		var text = "<li>First response arrow text</li>";
+		typing("#popover6 > ul", text, function() {
+			var pid = $('#popover6').parents(".popover-content");
+			appendUserButton(pid,function() {
+				svgLineTopAndBottom("#svgParent","#DLApi","#oDriver" ,"line6","grey", "top","bottom", "right", "right", "", function() {
+					$('#popover6 > ul').append('<li></li>');
+					var text = "second response arrow text";
+					typing("#popover6 > ul li:last", text, function() {
+						pid = $('#popover6').parents(".popover-content");
+							appendUserButton(pid,function() {
+								svgLineTopAndBottom("#svgParent","#oDriver","#bridge" ,"line7","grey", "top","bottom", "right", "right", "", function() {
+								$('#popover6 > ul').append('<li></li>');
+								var text = "third response arrow text";
+								typing("#popover6 > ul li:last", text, function() {
+									appendUserButton(pid,function() {
+										
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+	
+	
+	/* svgLineTopAndBottom("#svgParent","#ovalShape","#DLApi" ,"line5","grey", "top","bottom", "right", "right", "", function() {
 		svgLineTopAndBottom("#svgParent","#DLApi","#oDriver" ,"line6","grey", "top","bottom", "right", "right", "", function() {
 			svgLineTopAndBottom("#svgParent","#oDriver","#bridge" ,"line7","grey", "top","bottom", "right", "right", "", function() {
 				svgLineTopAndBottom("#svgParent","#bridge","#javaApp" ,"line8","grey", "top","bottom", "right", "right", "", function() {
@@ -460,7 +527,7 @@ function responseArrowAnimaiton() {
 				});
 			});
 		});
-	});
+	}); */
 }
 
 function client() {              
