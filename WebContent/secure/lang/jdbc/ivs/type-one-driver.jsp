@@ -85,7 +85,6 @@
 	z-index: 10000000;
 }
 
-
 .text-color {
 	color: #008080;
 }

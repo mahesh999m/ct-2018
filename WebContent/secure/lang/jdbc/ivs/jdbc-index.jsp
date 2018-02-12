@@ -87,7 +87,7 @@
 						<td>2</td>
 						<td>Type1 Driver</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Type one Driver', 'type-one-driver.jsp', 1, 1)"><i
+							href="javascript:opendialog('Type one Driver', 'type-one-driver-interactive.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Type1 Driver</span></td>
 						<td>NO NEED</td>
 						<td>MAHESH</td>
@@ -191,7 +191,7 @@
 						<td>3</td>
 						<td>CRUD</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('CRUD', 'crud.jsp', 1, 1)"><i
+							href="javascript:opendialog('CRUD', 'crud-database.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">CRUD</span></td>
 						<td></td>
 						<td>Swathi</td>
