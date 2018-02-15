@@ -22,7 +22,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/alertify/alertify.js" type="text/javascript"></script>
-<script type="text/javascript" src="/secure/lang/jdbc/js/Type-2Driver.js"></script>
+<script type="text/javascript" src="/secure/lang/jdbc/js/Type-2Driver1.js"></script>
 <title>JDBC Driver-2</title>
 <style>
 

@@ -17,7 +17,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src='/js/jquery.scrollTo.js'></script>
-<script src="../js/ct-svg-lines.js"></script>
+<script src="/secure/lang/jdbc/js/ct-svg-lines.js"></script>
 <title>driver-1-with-browser</title>
 <style>
 
@@ -290,11 +290,11 @@ caption, table.table-bordered, table.table-bordered > thead > tr > th, table.tab
 }
 
 .quadrat {
-  -webkit-animation: blinking 1s infinite; 
-  -moz-animation: blinking 1s infinite; 
+  -webkit-animation: NAME-YOUR-ANIMATION 1s infinite; 
+  -moz-animation: NAME-YOUR-ANIMATION 1s infinite; 
 }
 
-@-webkit-keyframes blinking {
+@-webkit-keyframes NAME-YOUR-ANIMATION {
   0%, 49% {
     background-color: 	rgb(255,255,0);
     border: 3px solid #e50000;
@@ -309,22 +309,9 @@ caption, table.table-bordered, table.table-bordered > thead > tr > th, table.tab
 	height: 100px;
 }
 
-.bg-blue-cl-white {
+.cg-blue-cl-white {
 	background: #003399;
 	color: white;
-}
-y {
-	color: green ;
-	font-weight : bold;
-	font-family : monospace;
-}
-
-.introjs-tooltiptext {
-	font-size: 12px;
-}
-
-.introjs-tooltiptext y {
-	color:  yellow;
 }
 
 </style>
@@ -386,14 +373,8 @@ function initIntroJs() {
 		var elementId = targetElement.id;
 		switch(elementId) {
 		case "driverOne":
-			var text = "The JDBC Type-1 driver is also known as the <b>JDBC-ODBC Bridge Driver.</b><br> <span><span id ='jdbc'>Here,<br> "
-						+"<ul><li>The acronym <b>JDBC  </b>is for - Java Database Connectivity.</span><br><span id = 'odbc'><b>ODBC for </b> "+
-						"- Open Database Connectivity.<br></span></span></li> "+
-						"<li>This driver gets its name, as it was the first driver that was created in <y>Java.<y></li> "+
-						"<li>It was used to talk to the underlying database through the <y>JDBC-ODBC</y> bridge.</li><li>This bridge connected this driver to the ODBC driver that"+
-						"was built by <y>Microsoft</y>.</li><li>The <y>ODBC</y> driver could talk to the databases and get data.</li></ul>"+
-						"<br/> Let  us understand how this driver works in detail.";
-						
+			var text = "Type-1 driver is also called as <b>JDBC-ODBC Bridge Driver.</b><br> <span><span id ='jdbc'>Here,<br> "
+						+"<b>JDBC</b>- Java Database Connectivity.</span><br><span id = 'odbc'><b>ODBC</b>- Open Database Connectivity.<br></span></span>";
 			popover("#totalPopoverDiv", "right", text,function() {
 				$('#popover1').parents(".popover-content").append('<div class = "text-right">'
 				+'<span class="introjs-button ct-btn-next" onclick="totalAnimation();">Next &#8594;</span><div>');	
@@ -402,7 +383,7 @@ function initIntroJs() {
 		case "htmlBody":
 			$('.introjs-helperLayer').one('transitionend', function () {
 				introjs.refresh();
-				var text = "This input is taken from the browser(client side application), here a valid student id to get the student details from the databse";
+				var text = "Enter valid input";
 				typing(".introjs-tooltiptext", text, function() {
 					validation("#sId");
 				});
@@ -412,8 +393,7 @@ function initIntroJs() {
 			$('#sId').attr('disabled','disabled');
 			$('.introjs-helperLayer').one('transitionend', function () {
 				introjs.refresh();
-				var text = "The input is then used inside the jdbc call, which is written "+
-				"using the <y>Jdbc API</y>. <br>Let us see how the flow happens  ";
+				var text = "arrowAnimationDiv text";
 				typing(".introjs-tooltiptext", text, function() {
 					$('.introjs-tooltipbuttons').append('<a class="user-btn introjs-button" onClick="arrowAnimation()">Next &#8594;</a>');
 				});
@@ -423,7 +403,7 @@ function initIntroJs() {
 		case "browser":
 			$('.introjs-tooltip').css({'min-width':'200px','overflow-y':'','height':''});
 			$('.introjs-helperLayer').one('transitionend', function () {
-				var text = "The Client app using the JDBC API, gets the result data that was sent by the Driver and displays it in the browser.";
+				var text = "getting student details by student id";
 				typing(".introjs-tooltiptext", text, function() {
 					var id = $('#sId').val().trim();
 					$('tr.hide:eq('+id[id.length-1]+')').removeClass('hide');
@@ -446,10 +426,7 @@ function totalAnimation() {
 	zoomInEffect("#database",function() {
 		$('#sId').attr('disabled','disabled');
 		zoomInEffect('#databaseTable',function() {
-			var text = "<span class='start-text'>This is the <y>database</y>. <br/><br/>Let us assume we are using an <y>RDBMS</y> like <y>Oracle</y>.</span>"+
-			"<span class='end-text'>"+
-			" In <y>RDBMS</y> the data is stored in tables.<br/><br/>Consider, we have a <y>STUDENT</y> TABLE that has details of Students in a class."+
-			"<br/><br/>Every database has a <y>database engine</y> which takes the input, queries the database and returns the results.</span>";
+			var text = "This is data in the form of table in database.";
 			popover("#database", "left", text,function() {
 				$('#popover2').parents(".popover-content").append('<div class = "text-right">'
 				+'<span class="introjs-button ct-btn-next" onclick="client();">Next &#8594;</span><div>');	
@@ -463,39 +440,34 @@ function arrowAnimation() {
 	count++;
 	$('.user-btn').remove();
 	svgLineTopAndBottom("#svgParent","#javaApp","#bridge" ,"line1","grey", "bottom","top", "left", "left", "", function() {
-		var text = "<li>The first call is to the <y>JDBC-ODBC Bridge Driver</y>, which takes the JDBC API calls "+
-		"and coverts it into <y>Odbc driver</y> calls.</li>";
+		var text = "<li>This is first arrow text This is first arrow textThis is first arrow textThis is first arrow textThis is first arrow text</li>";
 		$('.introjs-tooltiptext').append("<ul></ul>");
 		typing(".introjs-tooltiptext > ul", text, function() {
 			appendUserButton('.introjs-tooltipbuttons',function() {
 				svgLineTopAndBottom("#svgParent","#bridge","#oDriver" ,"line2","grey", "bottom","top", "left", "left", "", function() {
 					$('.introjs-tooltiptext > ul').append("<li></li>");
 					$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons',{duration:'slow', offset :{left:'left', top:'top' }});
-					var text = "The converted <y>odbc</y> calls are sent to the <y>ODBC driver</y> which understands what these calls are"+ 
-					" for and now converts them into a language the database engine understands";
+					var text = "This is second arrow text";
 					$('.introjs-tooltip').css('height','100px');
 					typing(".introjs-tooltiptext > ul li:last", text, function() {
 						appendUserButton('.introjs-tooltipbuttons',function() {
 							svgLineTopAndBottom("#svgParent","#oDriver","#DLApi" ,"line3","grey", "bottom","top", "left", "left", "", function() {
 								$('.introjs-tooltiptext > ul').append("<li></li>");
 								$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons',{duration:'slow', offset :{left:'left', top:'top' }});
-								var text = "The database engine receives these calls.";
+								var text = "This is third arrow text This is third arrow textThis is third arrow textThis is third arrow textThis is third arrow text ";
 								typing(".introjs-tooltiptext > ul li:last", text, function() {
 									appendUserButton('.introjs-tooltipbuttons',function() {
 										svgLineTopAndBottom("#svgParent","#DLApi","#ovalShape" ,"line4","grey", "bottom","top", "left", "left", "", function() {
 											$('.introjs-tooltiptext > ul').append("<li></li>");
 											$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons',{duration:'slow', offset :{left:'left', top:'top' }});
-											var text = " The DBEngine than talks to the database by passing the query to the database"+
-											" and gets the results.";
+											var text = "This is fourth arrow text";
 											typing(".introjs-tooltiptext > ul li:last", text, function() {
-												appendUserButton('.introjs-tooltipbuttons',function() {
-													$('table:eq(1),caption:eq(1)').addClass('z-index-css');
-													var text = "The database is queried for the specific records that match the query.";
-													popover("#DLApi", "right", text,function() {
-													$('#popover6').parent().addClass('bg-blue-cl-white');
+												$('table:eq(1),caption:eq(1)').addClass('z-index-css');
+												var text = "Here getting the information from the database table.";
+												popover("#databaseDiv", "right", text,function() {
+													$('#popover6').parent().addClass('cg-blue-cl-white');
 													$('#popover6').parents(".popover-content").append('<div class = "text-right">'
-													+'<span class="introjs-button ct-btn-next" onclick="responseArrowAnimaiton();">Next &#8594;</span><div>');
-													}); 
+															+'<span class="introjs-button ct-btn-next" onclick="responseArrowAnimaiton();">Next &#8594;</span><div>');
 												});
 											});
 										});
@@ -513,7 +485,6 @@ function arrowAnimation() {
 
 function appendUserButton(id, callBackFunction) {
 	$(id).append("<div class='text-right'><a class='user-btn introjs-button'>Next &#8594;</a></div>");
-	$('.introjs-tooltip').scrollTo('.introjs-tooltipbuttons',{duration:'slow', offset :{left:'left', top:'top' }});
 	$('.text-right').click(function() {
 		$(this).remove();
 		callBackFunction();
@@ -527,29 +498,26 @@ function responseArrowAnimaiton() {
 	$('.text-right').remove();
 	$('#popover6').append('<ul></ul>');
 	svgLineTopAndBottom("#svgParent","#ovalShape","#DLApi" ,"line5","grey", "top","bottom", "right", "right", "", function() {
-		var text = "<li>Here the specific student record is picked ie <y></y>and sent to the db engine</li>";
+		var text = "<li>First response arrow text</li>";
 		typing("#popover6 > ul", text, function() {
 			var pid = $('#popover6').parents(".popover-content");
 			appendUserButton(pid,function() {
 				svgLineTopAndBottom("#svgParent","#DLApi","#oDriver" ,"line6","grey", "top","bottom", "right", "right", "", function() {
 					$('#popover6 > ul').append('<li></li>');
-					var text = "This data is now sent to the ODBC driver.";
+					var text = "second response arrow text";
 					typing("#popover6 > ul li:last", text, function() {
 						pid = $('#popover6').parents(".popover-content");
 							appendUserButton(pid,function() {
 								svgLineTopAndBottom("#svgParent","#oDriver","#bridge" ,"line7","grey", "top","bottom", "right", "right", "", function() {
 								$('#popover6 > ul').append('<li></li>');
-								var text = "The ODBC driver changes this data into its own format and sends it to the bridge driver";
+								var text = "third response arrow text";
 								typing("#popover6 > ul li:last", text, function() {
 									appendUserButton(pid,function() {
 										svgLineTopAndBottom("#svgParent","#bridge","#javaApp" ,"line8","grey", "top","bottom", "right", "right", "", function() {
 											$('#popover6 > ul').append('<li></li>');
-											var text = "The bridge now converts the ODBC format result data into a format that the client application can understand.";
+											var text = "fourth response arrow text";
 											typing("#popover6 > ul li:last", text, function() {
-												appendUserButton(pid,function() {
-													$('.bg-blue-cl-white').removeClass('bg-blue-cl-white');
-													introjs.nextStep();
-												});
+												introjs.nextStep();
 											});
 										});
 									});
@@ -562,10 +530,19 @@ function responseArrowAnimaiton() {
 		});
 	});
 	
+	
+	/* svgLineTopAndBottom("#svgParent","#ovalShape","#DLApi" ,"line5","grey", "top","bottom", "right", "right", "", function() {
+		svgLineTopAndBottom("#svgParent","#DLApi","#oDriver" ,"line6","grey", "top","bottom", "right", "right", "", function() {
+			svgLineTopAndBottom("#svgParent","#oDriver","#bridge" ,"line7","grey", "top","bottom", "right", "right", "", function() {
+				svgLineTopAndBottom("#svgParent","#bridge","#javaApp" ,"line8","grey", "top","bottom", "right", "right", "", function() {
+				introjs.nextStep();
+				});
+			});
+		});
+	}); */
 }
 
-function client() {
-	popoverGrayOut();
+function client() {              
 	count++;
 	$('.text-right').remove();
 	zoomInEffect('#javaApp',function() {
@@ -573,54 +550,45 @@ function client() {
 		zoomInEffect("#browser",function() {
 			$('#line111').css('opacity', '');
 			svgText('#line111', 'Application layer');
-			var text = "<span class='start-text'>This is the <y>Client side Application</y> that needs to display the student "+
-						"data</span><span class='end-text'> that is stored in the database."+
-						" A client side application can be a <y>jsp</y> which, <ul><li> Using the <y>Jdbc API</y> talks to the jdbc driver</li>"+
-						"<li>And gets the needed data from the driver.</li><li>It then displays the data on the browser.</li></ul></span>";
+			var text = "This is the browser.";
 			popover("#javaApp", "left", text,function() {
 				$('#popover3').parents(".popover-content").append('<div class = "text-right">'
-						+'<span class="introjs-button ct-btn-next" onclick="bridge();">Next &#8594;</span><div>');
+						+'<span class="introjs-button ct-btn-next" onclick="oDriver();">Next &#8594;</span><div>');
 			});
 		});
 	});
 }
 
  function oDriver() {
-	 popoverGrayOut();
 	count++;
 	$('.text-right').remove();
 	zoomInEffect('#oDriver',function() {
 		$('#line113').css('opacity', '');
 		svgText('#line113', 'Database layer');
-		var text = "<span class='start-text'><b>ODBC Driver</b> : This driver was developed by </span><span class='end-text'><y>Microsoft</y> long before <y>JDBC</y> driver was developed."+
-					"<br/><br/> The <y>ODBC</y> driver takes the calls that are made and converts them "+
-					"to the language that is understood by the <y>Database engine.</y></span>"
-		popover("#oDriver", "right", text,function() {
-			$('#popover5').parents(".popover-content").append('<div class = "text-right">'
-					+'<span class="introjs-button ct-btn-next" onclick="inputIntroStep();">Next &#8594;</span><div>');
+		var text = "odbc Driver";
+		popover("#oDriver", "left", text,function() {
+			$('#popover4').parents(".popover-content").append('<div class = "text-right">'
+					+'<span class="introjs-button ct-btn-next" onclick="bridge();">Next &#8594;</span><div>');
 		});
 	});
 }
  
  function bridge() {
-	 popoverGrayOut();
 	 count++;
 	 $('.text-right').remove();
 	 zoomInEffect('#bridge',function() {
 		$('#line112').css('opacity', '');
 		svgText('#line112', 'Middle / Service layer');
-		var text = "<span class='start-text'>The <y>Type -1 </y> driver also known as the <y>JDBC-ODBC Bridge driver</y>,</span><span class='end-text'>takes the jdbc calls and converts them to ODBC calls ."+
-		"<br/><br/>These <y>ODBC</y> calls are sent  to the ODBC driver to communicate to the database.</span>"		
+		var text = "bridge text";
 		popover("#bridge", "left", text,function() {
-			$('#popover4').parents(".popover-content").append('<div class = "text-right">'
-					+'<span class="introjs-button ct-btn-next" onclick="oDriver();">Next &#8594;</span><div>');
+			$('#popover5').parents(".popover-content").append('<div class = "text-right">'
+					+'<span class="introjs-button ct-btn-next" onclick="inputIntroStep();">Next &#8594;</span><div>');
 		});
 	 });
 	 
  }
  
  function inputIntroStep() {
-	 popoverGrayOut();
 	 introjs.nextStep();
 	 introjs.refresh();
 	 $('.text-right').remove();
@@ -698,7 +666,7 @@ function popoverGrayOut() {
 	$('#popover' + count + ' .end-text').css({'display' : 'none'});
 	$('#popover' + count + ' .start-text').after('<span class="more" style="display: inline">.....</span>');
 	mouseEvents();
-	//count++;
+	count++;
 } 
 
 function svgText(lineId, textValue) {
@@ -742,7 +710,7 @@ function validation(selector) {
 		}
 		
 	});
-	$(selector).on('keyup', function(e) {
+	$(selector).on('keyup', function(e) { 
 		if ($(this).val().length != 0) {
 			$('.error-text').remove();
 		}
@@ -751,9 +719,6 @@ function validation(selector) {
 			var id = $('#sId').val().trim();
 			if (($.inArray(id, arr) !== -1)) {
 				$('.introjs-nextbutton').show();
-				if ( e.keyCode == 13) {
-					introjs.nextStep();
-				}
 			} else {
 				$('.introjs-tooltiptext').append('<div class="error-text ct-fonts errMsg">Invaid student id.</div>');	
 			}
@@ -838,7 +803,7 @@ function validation(selector) {
 					</div>
 				</div>
 				<div class="col-xs-5 padding00" id="BrowserTableDiv">
-					<div id ="totalPopoverDiv" class="col-xs-12 padding00"><div id='browserHead' class="col-xs-12 text-center opacity00">Browser</div></div>
+					<div id ="totalPopoverDiv" class="col-xs-12 padding00"><div id="browserHead" class="col-xs-12 text-center opacity00">Browser</div></div>
 					<div class="col-xs-12">
 						<div class='col-xs-12 opacity00 container' id='browser'>
 							<div class='tab-container'>
@@ -861,7 +826,7 @@ function validation(selector) {
 								</div>
 								<div class='col-xs-8 padding00 text-center url'>
 									<input type="text" maxlength="100" class="usr-text"
-										class="padding00" disabled="disabled" value="students.jsp">
+										class="padding00" disabled="disabled" value="basic.jsp">
 									<span class='col-xs-1 padding00'><i
 										class="fa fa-star-o fa-1x"></i></span>
 								</div>
